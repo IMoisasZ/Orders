@@ -1,0 +1,104 @@
+.app_header {
+    display: flex;
+    justify-content: space-between; /* Espaça os elementos */
+    align-items: center; /* Alinha verticalmente */
+    padding: 1rem 2rem; /* Espaçamento interno */
+    background-color: #000080; /* Fundo azul escuro */
+    color: #fff; /* Texto branco */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo do Logo */
+.header_logo {
+    &:hover {
+        img {
+            border-radius: 1rem;
+        }
+        h1 {
+            color: #ffd700
+        }
+    }
+        
+    & img {
+        height: 4rem;
+        margin: 0 auto;
+        transition: 1s ease;
+
+    }
+
+    h1 {
+        text-align: center;
+        transition: 1s ease;
+    }
+}
+
+
+/* Estilo da Navegação */
+.header_nav {
+    & ul {
+        list-style: none; /* Remove os pontos da lista */
+        margin: 0;
+        padding: 0;
+        display: flex; /* Deixa os links um ao lado do outro */
+        gap: 2rem; /* Espaçamento entre os links */
+    }
+
+    & a {
+        color: #fff;
+        text-decoration: none; /* Remove o sublinhado */
+        font-size: 1rem;
+        font-weight: 500;
+        transition: color 0.3s ease; /* Transição suave na cor */
+
+        &:hover {
+                color: #ffd700; 
+        }
+    }
+} 
+
+/* Estilo da Seção do Usuário */
+.header_user_info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user_avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ffd700; /* Um fundo para a letra */
+    color: #000080; /* Cor do texto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.user_details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    & p {
+        margin: 0;
+        font-size: 0.9rem;
+        font-weight: 300;
+    }
+
+    & button {
+        background: none;
+        border: none;
+        color: #bbb;
+        font-size: 0.8rem;
+        cursor: pointer;
+        text-decoration: underline;
+        padding: 0;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+}

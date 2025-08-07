@@ -1,0 +1,58 @@
+/* Box-sizing para facilitar o layout */
+html {
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Remover margens e paddings padrão de todos os elementos */
+body, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+dl, dd, ol, ul, figure, hr,
+fieldset, legend, section, article, aside,
+details, figcaption, footer, header, menu, nav,
+main, picture, summary {
+  margin: 0;
+  padding: 0;
+}
+
+/* Redefinir estilos de lista */
+ol, ul {
+  list-style: none;
+}
+
+/* Remover estilo de link padrão e usar herança de cor */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Imagens responsivas e garantir que não ultrapassem o container */
+img, video, svg, iframe, object {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remover bordas e backgrounds padrão de botões e inputs */
+button, input, select, textarea {
+  background: none;
+  border: none;
+  font: inherit; /* Herdar fonte do body ou do elemento pai */
+  color: inherit; /* Herdar cor do body ou do elemento pai */
+  cursor: pointer; /* Cursor de ponteiro para elementos interativos */
+  outline: none; /* Remover outline no foco (cuidado: pode impactar acessibilidade, considere focar com CSS) */
+}
+
+/* Ajustes específicos para textarea */
+textarea {
+  resize: vertical; /* Permitir apenas redimensionamento vertical */
+}
+
+/* Estilos para HTML5 reset */
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+
+/* font */

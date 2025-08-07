@@ -1,0 +1,9 @@
+# backend
+node_modules
+order.log
+.env.development
+.env.production
+.env.test
+
+# frontend
+.env

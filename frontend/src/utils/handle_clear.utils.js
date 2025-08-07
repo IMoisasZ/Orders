@@ -1,0 +1,1 @@
+export function handleClear(func) {}

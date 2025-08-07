@@ -1,0 +1,24 @@
+.form_container {
+    width: 100%;
+	margin: 20px auto;
+	padding: 2rem;
+	background-color: #ffffff;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
+
+	/* Media Queries */
+	@media (max-width: 768px) {
+		.form_container {
+            padding: 20px;
+            margin: 15px auto;
+        }
+	}
+
+	@media (max-width: 480px) {
+        .form_container {
+            padding: 15px;
+            margin: 10px auto;
+        }
+	}
+}

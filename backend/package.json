@@ -1,0 +1,28 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "app to management orders of company injetaq",
+  "license": "ISC",
+  "author": "Moisas",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start:dev": "cross-env NODE_ENV=development node --watch src/server.js",
+    "start:prod": "cross-env NODE_ENV=production node --watch src/server.js",
+    "test": "cross-env NODE_ENV=test node --watch src/server.js",
+    "start": "npm run start:dev"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "mysql2": "^3.14.2",
+    "sequelize": "^6.37.7",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.4",
+    "cross-env": "^7.0.3"
+  }
+}

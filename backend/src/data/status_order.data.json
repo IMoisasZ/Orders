@@ -1,0 +1,7 @@
+[
+	{ "id": 1, "description": "NÃO FATURADO" },
+	{ "id": 2, "description": "FATURADO PARCIAL" },
+	{ "id": 3, "description": "FATURADO TOTAL" },
+	{ "id": 4, "description": "ENCERRADO" },
+	{ "id": 5, "description": "CANCELADO" }
+]

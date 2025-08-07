@@ -1,0 +1,128 @@
+/* src/components/Table/Table.module.css */
+
+/* ------------------------------------------------------------- */
+/* Container para Rolagem Horizontal (Primeira estratégia)      */
+/* ------------------------------------------------------------- */
+.tableResponsiveContainer {
+    width: 100%;
+    overflow-x: auto; /* Permite rolagem horizontal */
+    -webkit-overflow-scrolling: touch; /* Melhora a rolagem em iOS */
+    margin-bottom: 20px; /* Espaço abaixo da tabela */
+    border: 1px solid #e0e0e0; /* Borda leve ao redor do container */
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra suave */
+}
+
+/* ------------------------------------------------------------- */
+/* Estilos Base da Tabela                                        */
+/* ------------------------------------------------------------- */
+.table {
+    width: 80%;
+    border-collapse: collapse;
+    min-width: 600px;
+    margin: 0 auto;
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0; /* Borda inferior para cada célula */
+}
+
+.table th {
+    background-color: #f8f8f8;
+    color: #555;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.table tbody tr:hover {
+    background-color: #f5f5f5; /* Efeito hover nas linhas */
+}
+
+/* ------------------------------------------------------------- */
+/* Responsividade Avançada: Empilhamento de Colunas (Mobile)   */
+/* ------------------------------------------------------------- */
+/* Esta abordagem transforma a tabela em "cartões" em telas pequenas */
+
+@media (max-width: 768px) {
+    .tableResponsiveContainer {
+        border: none; /* Remove a borda do container quando empilha */
+        box-shadow: none;
+    }
+
+    .table {
+        border: none; /* Remove bordas da tabela */
+        min-width: unset; /* Remove largura mínima para permitir empilhamento */
+        display: block; /* A tabela se comporta como um bloco */
+    }
+
+    .table thead {
+        display: none; /* Esconde o cabeçalho original da tabela em mobile */
+    }
+
+    .table tbody,
+    .table tr,
+    .table td {
+        display: block; /* Linhas e células se comportam como blocos */
+        width: 100%; /* Cada célula ocupa a largura total */
+    }
+
+    .table tr {
+        margin-bottom: 15px; /* Espaço entre as "linhas-cartões" */
+        border: 1px solid #e0e0e0; /* Borda para cada "cartão" */
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .table td {
+        border: none; /* Remove bordas internas das células */
+        text-align: right; /* Alinha o valor à direita */
+        padding: 10px 15px;
+        position: relative; /* Para posicionar o label da coluna */
+        padding-left: 50%; /* Espaço para o label antes do valor */
+        word-wrap: break-word; /* Garante que palavras longas quebrem */
+    }
+
+    /* Adiciona o cabeçalho da coluna como um pseudo-elemento no TD */
+    .table td::before {
+        content: attr(data-label); /* Pega o valor do atributo data-label no HTML */
+        position: absolute;
+        left: 15px;
+        width: calc(50% - 30px); /* Ajusta a largura do label */
+        padding-right: 10px;
+        white-space: nowrap; /* Evita que o label quebre */
+        font-weight: 600;
+        color: #777;
+        text-align: left; /* Alinha o label à esquerda */
+        font-size: 14px;
+    }
+}
+
+.th div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.disabled {
+    color: red;
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+    .table td {
+        padding: 8px 12px;
+        font-size: 14px;
+        padding-left: 45%; /* Ajusta espaço para o label */
+    }
+    .table td::before {
+        left: 12px;
+        width: calc(45% - 24px);
+        font-size: 13px;
+    }
+}
