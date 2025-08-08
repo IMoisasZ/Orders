@@ -94,24 +94,33 @@ export default function Client() {
 			currentList = currentList.filter((client) => client.active === true)
 		}
 
-		// 2. Apply the filter for search
+		/**
+		 * @description 2. Apply the filter for search
+		 */
 		if (search) {
 			currentList = currentList.filter((client) =>
 				client.client.toLowerCase().includes(search.toLowerCase())
 			)
 		}
 
-		// 3. Apply sorting
+		/**
+		 * @description 3. Apply sorting
+		 */
 		currentList = sortData(currentList, sortConfig.key, sortConfig.direction)
 
-		// 4. Update the list filtered, create the pagination and calculate the total of pages
+		/**
+		 *@description 4. Update the list filtered, create the pagination and calculate the total of pages
+		 */
 		setFilteredClients(currentList)
 		const newTotalPages = Math.ceil(currentList.length / clientsPerPage)
 		setTotalPages(newTotalPages)
 		setActualPage(1) // Reset the page for the first
 	}, [listClients, hideClientsDisabled, search, clientsPerPage, sortConfig])
 
-	// function to sort the data
+	/**
+	 * function to sort the data
+	 * @param {key} key -> Receive the param key to do the data sort.
+	 */
 	function handleSort(key) {
 		let direction = 'asc'
 		if (sortConfig.key === key && sortConfig.direction === 'asc') {
@@ -120,7 +129,9 @@ export default function Client() {
 		setSortConfig({ key, direction })
 	}
 
-	// Functions for navigation of pagination
+	/**
+	 * @description Functions for navigation of pagination
+	 */
 	function handleNextPage() {
 		if (actualPage < totalPages) {
 			setActualPage(actualPage + 1)
@@ -145,12 +156,17 @@ export default function Client() {
 		}
 	}
 
-	// Logical to rendering the clients of actual page
+	/**
+	 * @description Logical to rendering the clients of actual page
+	 */
 	const lastItemIndex = actualPage * clientsPerPage
 	const firstItemIndex = lastItemIndex - clientsPerPage
 	const clientsByPage = filteredClients.slice(firstItemIndex, lastItemIndex)
 
-	// Functions of manipulation the state
+	/**
+	 * Functions of manipulation the state
+	 * @param {clientToEdit } clientToEdit -> Receive the data client to execute the edition.
+	 */
 	function handleEdit(clientToEdit) {
 		setId(clientToEdit.id)
 		setClient(clientToEdit.client)
@@ -158,6 +174,9 @@ export default function Client() {
 		setNameBtn('Editar')
 	}
 
+	/**
+	 * @param {clientToEdit } clientToUpdate -> Receive the data client to execute the updating.
+	 */
 	async function disableEnableClient(clientToUpdate) {
 		try {
 			await patchDisableEnableClient(clientToUpdate.id, !clientToUpdate.active)
@@ -229,6 +248,9 @@ export default function Client() {
 				</Button>
 			</Form>
 
+			{/**
+			 * @description -> Component to give tha information for search and show only clients enabled or disabled
+			 */}
 			<div
 				style={{
 					display: 'flex',
@@ -241,7 +263,6 @@ export default function Client() {
 					borderRadius: '.5rem',
 					padding: '.5rem',
 				}}>
-				{/*Search text */}
 				<Checkbox
 					labelName='Apenas clientes ativos?'
 					checked={hideClientsDisabled}
@@ -262,9 +283,14 @@ export default function Client() {
 			<Table
 				header={header}
 				colSpan={2}
-				onSort={handleSort} // send the function of classification to the table
+				/**
+				 * @description -> send the function of classification to the table
+				 */
+				onSort={handleSort}
 				sortConfig={sortConfig}>
-				{/*send the state of classification to the table*/}
+				{/**
+				 * @description -> send the state of classification to the table
+				 * */}
 				{clientsByPage.map((client) => {
 					return (
 						<Tr

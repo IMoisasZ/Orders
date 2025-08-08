@@ -1,5 +1,9 @@
 import { API } from '../api/api'
 
+/**
+ * @param {client} client -> Data client to execute the creation a new client.
+ * @returns -> Returns the client created.
+ */
 async function createClient(client) {
 	try {
 		const { data } = await API.post('client', client)
@@ -9,6 +13,10 @@ async function createClient(client) {
 	}
 }
 
+/**
+ * @param {dataClient} dataClient -> Data client to execute the update the client.
+ * @returns -> Returns the client updated.
+ */
 async function updateClient(dataClient) {
 	const { id, ...client } = dataClient
 
@@ -20,6 +28,10 @@ async function updateClient(dataClient) {
 	}
 }
 
+/**
+ * @param {active} active -> Information (true = enabled or false = disabled) about the clients.
+ * @returns -> Returns all clients like the param informed.
+ */
 async function getAllClients(active) {
 	try {
 		const { data } = await API.get(`client?active=${active}`)
@@ -30,6 +42,10 @@ async function getAllClients(active) {
 	}
 }
 
+/**
+ * @param {id} id -> Information about the number of client that exist on database.
+ * @returns -> Returns the client like the param informed.
+ */
 async function getClient(id) {
 	try {
 		const { data } = await API.get(`client/${id}`)
@@ -39,6 +55,11 @@ async function getClient(id) {
 	}
 }
 
+/**
+ * @param {id} id -> Information about the number of client that exist on database.
+ * @param {active} active -> Information (true = enabled or false = disabled) about the clients.
+ * @returns -> Returns the client like the params informed.
+ */
 async function patchDisableEnableClient(id, active) {
 	try {
 		const { data } = await API.patch(`client/${id}`, { active })

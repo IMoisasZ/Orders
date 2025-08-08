@@ -1,7 +1,10 @@
 export function sortData(data, key, type = 'asc') {
 	if (!Array.isArray(data) || data.length === 0 || !key) return data
 
-	const sortedData = [...data] //copy of the data
+	/**
+	 * @description -> Copy of the data.
+	 */
+	const sortedData = [...data]
 
 	const firstValue = data[0]?.[key]
 	const valueType = typeof firstValue
@@ -25,7 +28,9 @@ export function sortData(data, key, type = 'asc') {
 
 		case 'boolean':
 			return sortedData.sort((a, b) => {
-				// Convert the values booleans to numbers (true -> 1, false -> 0)
+				/**
+				 * @description -> Convert the values booleans to numbers (true -> 1, false -> 0).
+				 */
 				const valA = Number(!!a[key])
 				const valB = Number(!!b[key])
 				return type === 'asc' ? valA - valB : valB - valA

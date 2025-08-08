@@ -1,22 +1,34 @@
 import { showMessage } from '../components/message/Message'
 
+/**
+ * @param {error} error -> Receive the errors of application
+ * @param {defaultMessage} defaultMessage -> Its a message default case the message doesn't be informed.
+ */
 export function handleError(
 	error,
 	defaultMessage = 'Ocorreu um erro inesperado.'
 ) {
-	// error of deploy
+	/**
+	 * @description -> Error of deploy.
+	 */
 	console.error({ error })
 
-	// array of errors
+	/**
+	 * @description -> Array of errors.
+	 */
 	const messagesToDisplay = []
 
-	// verify if have errors and put into the variable messagesToDisplay
+	/**
+	 * @description -> Verify if have errors and put into the variable messagesToDisplay.
+	 */
 	if (error.response && error.response.data) {
 		if (error.response.data.error) {
 			messagesToDisplay.push(error.response.data.error)
 		}
 
-		// verify if have errors in another place and put into the variable messagesToDisplay
+		/**
+		 * @description -> Verify if have errors in another place and put into the variable messagesToDisplay.
+		 */
 		if (
 			error.response.data.errors &&
 			Array.isArray(error.response.data.errors)
@@ -29,12 +41,16 @@ export function handleError(
 		messagesToDisplay.push(error.message)
 	}
 
-	// if haven't errors into the messagesToDisplay so put the defaultMessage
+	/**
+	 * @description -> If haven't errors into the messagesToDisplay so put the defaultMessage.
+	 */
 	if (messagesToDisplay.length === 0) {
 		messagesToDisplay.push(defaultMessage)
 	}
 
-	// show message
+	/**
+	 * @description -> Show message.
+	 */
 	messagesToDisplay.forEach((msg) => {
 		showMessage.error(msg)
 	})

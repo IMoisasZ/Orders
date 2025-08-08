@@ -1,4 +1,4 @@
-/* Box-sizing para facilitar o layout */
+/* Box-sizing to left easer the layout */
 html {
   box-sizing: border-box;
   font-family: 'Times New Roman', Times, serif;
@@ -7,7 +7,7 @@ html {
   box-sizing: inherit;
 }
 
-/* Remover margens e paddings padrão de todos os elementos */
+/* Remove the default margins and paddings all of elements. */
 body, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 dl, dd, ol, ul, figure, hr,
 fieldset, legend, section, article, aside,
@@ -17,42 +17,41 @@ main, picture, summary {
   padding: 0;
 }
 
-/* Redefinir estilos de lista */
+/* Reset styles of list*/
 ol, ul {
   list-style: none;
 }
 
-/* Remover estilo de link padrão e usar herança de cor */
+/* Remove styles links default and use inherit of color.*/
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Imagens responsivas e garantir que não ultrapassem o container */
+/* Images reponsibles and guarantee that not overtaken the container.*/
 img, video, svg, iframe, object {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-/* Remover bordas e backgrounds padrão de botões e inputs */
-button, input, select, textarea {
+/* Remove borders and backgrounds default of buttons and inputs.*/
+button, select, textarea {
   background: none;
   border: none;
-  font: inherit; /* Herdar fonte do body ou do elemento pai */
-  color: inherit; /* Herdar cor do body ou do elemento pai */
-  cursor: pointer; /* Cursor de ponteiro para elementos interativos */
-  outline: none; /* Remover outline no foco (cuidado: pode impactar acessibilidade, considere focar com CSS) */
+  font: inherit; /* Inherit the font of body or of father element inherit. */
+  color: inherit; /* Inherit color of body or of father element. */
+  cursor: pointer; /* Cursor pointer to element interactive. */
+  outline: none; /* Remove outline on focus (warn: its con have some impact on accessibility, consider focus with CSS) */
 }
 
-/* Ajustes específicos para textarea */
+/* Adjust specify to textarea*/
 textarea {
-  resize: vertical; /* Permitir apenas redimensionamento vertical */
+  resize: vertical; /* Permit only vertical resizing*/
 }
 
-/* Estilos para HTML5 reset */
+/* Styles for HTML5 reset*/
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 
-/* font */

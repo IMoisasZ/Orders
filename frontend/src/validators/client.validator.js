@@ -1,5 +1,10 @@
+/**
+ *
+ * @param {type} type -> Type = 'create','update','get','patch'.
+ * @param {*} clientData -> Its the data that will be validated.
+ * @returns -> Error or true. Its depends the validation of clientData.
+ */
 export function validatorClient(type, clientData) {
-	// type = 'create','update','get','patch'
 	const { id, client } = clientData
 	const validationErrors = []
 
