@@ -9,7 +9,7 @@
   "scripts": {
     "start:dev": "cross-env NODE_ENV=development node --watch src/server.js",
     "start:prod": "cross-env NODE_ENV=production node --watch src/server.js",
-    "test": "cross-env NODE_ENV=test node --watch src/server.js",
+    "test": "cross-env NODE_ENV=test jest",
     "start": "npm run start:dev"
   },
   "dependencies": {
@@ -22,7 +22,19 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^30.0.5",
     "jsdoc": "^4.0.4",
-    "cross-env": "^7.0.3"
+    "supertest": "^7.1.4"
+  },
+  "jest": {
+  "transform": {},
+  "testMatch": [
+    "<rootDir>/src/**/*.test.js",
+    "<rootDir>/__tests__/**/*.js"
+  ],
+  "moduleNameMapper": {
+    "^(\\.{1,2}/.*)\\.js$": "$1"
   }
+}
 }
