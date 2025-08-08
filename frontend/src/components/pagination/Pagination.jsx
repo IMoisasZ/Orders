@@ -1,8 +1,22 @@
+/** @format */
+
 import React from 'react'
 import Button from '../button/Button'
 import Input from '../input/Input'
 import styles from './Pagination.module.css'
 
+/**
+ * @param {handleClickPrevious,
+ * handleClickNext,
+ * valueItemsPerPage,
+ * valueActualPage,
+ * handleChangeItemsPerPage,
+ * handleChangeActualPage,
+ * handleClickFirstPage,
+ * handleClickLastPage,
+ * labelNameItemsPerPage } params -> All of params to execute this component. like show the buttons and inputs will be show information the actual page or total page.
+ * @returns
+ */
 export default function Pagination({
 	handleClickPrevious,
 	handleClickNext,
@@ -33,7 +47,6 @@ export default function Pagination({
 				/>
 				<Input
 					name='actual_page'
-					// labelName='Pagina atual'
 					value={valueActualPage}
 					handleChange={handleChangeActualPage}
 					style={{ textAlign: 'center' }}

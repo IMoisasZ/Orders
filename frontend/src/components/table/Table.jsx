@@ -1,28 +1,37 @@
+/** @format */
+
 import React from 'react' // Remova o useState
 import styles from './Table.module.css'
 import Button from '../button/Button'
 
+/**
+ * @param {header} header -> Array with head of table.
+ * @param {name} name -> Name of component.
+ * @param {colSpan} colSpan -> Attribute to use the number specify of columns for one information.
+ * @param {children} children -> Information yhat will be included into this component.
+ * @param {onSort} onSort -> Function that do sort of data this component.
+ * @param {sortConfig} sortConfig -> Object of configuration to the config.
+ * @returns
+ */
 export default function Table({
 	header,
 	name,
-	id = name,
 	colSpan = 2,
 	children,
-	onSort, // Nova prop: a função de ordenação do componente pai
-	sortConfig, // Nova prop: o objeto de configuração da ordenação
+	onSort,
+	sortConfig,
 }) {
-	// Agora o estado `sort` e a função `handleSort` não são mais necessários aqui
-
 	return (
 		<div>
 			<table
 				className={styles.table}
-				id={id}
+				id={name}
 				name={name}>
 				<thead>
 					<tr>
 						{header?.map((headItem) => {
-							const sortable = headItem.sortable !== false // A coluna é ordenável por padrão, a menos que seja explicitamente 'false'
+							/**@description The column is ordering for default, less then be explicitly 'false' */
+							const sortable = headItem.sortable !== false
 							const isSorted = sortConfig && sortConfig.key === headItem.key
 							let sortIcon = ''
 							let sortTitle = ''

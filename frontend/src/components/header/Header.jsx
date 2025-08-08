@@ -1,15 +1,21 @@
+/** @format */
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import logo from '../../assets/images/logo_mizp.jpeg'
 import styles from './Header.module.css'
 import { linksHeader } from '../../data/header_links.data'
 
+/**
+ * @param {nameHeader} nameHeader -> Using this attribute to create a name that will be show on the side of image.
+ * @returns -> Returns the component with the attributes wish.
+ */
+
 export default function Header({ nameHeader = '' }) {
 	const [userName, _] = useState('Moisés')
 	const navigate = useNavigate()
 	return (
 		<header className={styles.app_header}>
-			{/* Section 1: Logo */}
+			{/**@description Section 1: Logo. */}
 			<div className={styles.header_logo}>
 				<img
 					src={logo}
@@ -18,7 +24,7 @@ export default function Header({ nameHeader = '' }) {
 				{nameHeader && <h1>{nameHeader.toUpperCase()}</h1>}
 			</div>
 
-			{/* Section 2: Navigation links */}
+			{/**@description Section 2: Navigation links. */}
 			<nav className={styles.header_nav}>
 				<ul>
 					{linksHeader.map((link) => {
@@ -31,20 +37,23 @@ export default function Header({ nameHeader = '' }) {
 				</ul>
 			</nav>
 
-			{/* Section 3: User info */}
+			{/**@description Section 3: User info. */}
 			<div className={styles.header_user_info}>
-				{/* Avatar user */}
+				{/**
+				 * @description Avatar user. */}
 				<button
 					className={styles.user_avatar}
 					onClick={() => navigate('/user')}>
 					{userName.slice(0, 1)}
 				</button>
-				{/* Nome do usuário e botão de sair */}
+				{/**
+				 * @description User name and exit button.
+				 */}
 				<div className={styles.user_details}>
-					{/* The name of user will be included after the logical of login be created*/}
+					{/**@description The name of user will be included after the logical of login be created. */}
 					<p>{`Olá, ${userName}`}</p>
 
-					{/* It'll be better when the logical about logout to be created*/}
+					{/** @description It'll be better when the logical about logout to be created. */}
 					<button onClick={() => navigate('/')}>Sair</button>
 				</div>
 			</div>

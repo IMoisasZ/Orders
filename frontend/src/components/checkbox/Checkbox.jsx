@@ -1,5 +1,18 @@
+/** @format */
 import React from 'react'
 import styles from './Checkbox.module.css'
+
+/**
+ * @param {name} name -> Name of componente that will be rendering.
+ * @param {labelName} labelName -> Define what is the label name of component.
+ * @param {disabled} disabled -> Show if the component will be disabled or enabled. Its depends that it is 'true' or 'false'.
+ * @param {value} value -> Info the value of the component will be show.
+ * @param {checked} checked -> Info if the component will be 'true' or 'false'.
+ * @param {toggleChange} toggleChange -> Its a function to execute some thing when it'll clicked.
+ * @param {children} children -> Information of button, like the name of button.
+ * @param {classNameContainerCheckbox, classNameCheckbox} classNameContainerCheckbox/classNameCheckbox -> Attribute to create some style to the component.
+ * @returns -> Returns the component with the attributes wish.
+ */
 
 export default function Checkbox({
 	name,
@@ -8,15 +21,11 @@ export default function Checkbox({
 	value,
 	checked,
 	toggleChange,
-	style,
-	styleContainerCheckbox,
 	classNameContainerCheckbox = '',
 	classNameCheckbox = '',
 }) {
 	return (
-		<div
-			className={`${styles.container} ${classNameContainerCheckbox}`}
-			style={styleContainerCheckbox}>
+		<div className={`${styles.container} ${classNameContainerCheckbox}`}>
 			<label htmlFor={name}>{labelName}</label>
 			<input
 				className={classNameCheckbox}
@@ -27,7 +36,6 @@ export default function Checkbox({
 				value={value}
 				checked={checked}
 				onChange={toggleChange}
-				style={style}
 			/>
 		</div>
 	)

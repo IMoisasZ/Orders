@@ -1,10 +1,18 @@
+/** @format */
+
 import axios from 'axios'
 import { handleError } from '../utils/error_handler.utils'
 
+/**
+ * @description variable to create the connection between backend (API) to frontend
+ */
 export const API = axios.create({
 	baseURL: process.env.REACT_APP_API_URL,
 })
 
+/**
+ * @description Function to intercept the response error about the routes
+ */
 API.interceptors.response.use(
 	(response) => response,
 	(error) => {

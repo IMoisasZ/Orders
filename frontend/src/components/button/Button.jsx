@@ -1,31 +1,41 @@
+/** @format */
 import React from 'react'
 import styles from './Button.module.css'
-
-// Sugestão de refatoração do list_btn_icons.data para um objeto/mapa
-// export const listBtnIcons = {
-//     'edit': 'icone_de_edicao',
-//     'a/z': 'icone_de_ordenacao_asc',
-//     'z/a': 'icone_de_ordenacao_desc',
-//     ...
-// };
 import { listBtnIcons } from '../../data/list_btn_icons.data'
+
+/**
+ * @param {name} name -> Name of componente that will be rendering.
+ * @param {type} type -> Type of button like 'button','submit' or 'reset'.
+ * @param {disabled} disabled -> Show if the component will be disabled or enabled. Its depends that it is 'true' or 'false'.
+ * @param {handleClick} handleClick -> Its a function to execute some thing when it'll clicked.
+ * @param {children} children -> Information of button, like the name of button.
+ * @param {classNameBtn, classNameBtnIcon} classNameBtn/classNameBtnIcon -> Attribute to create some style of the component.
+ * @param {variant} variant -> Choose the wich types of button you want create like for example 'edit'.
+ * @param {typeBtn} typeBtn -> Showwhat type of component you want create. In this case its about a 'button' with text name or a 'button' with icon.
+ * @param {title} title -> Attribute to show info about the component.
+ * @param {btnIcon} btnIon -> Type of button that show taking this information the listBtnIcons.
+ * @param {className} className -> Using to take the className and to choose what kint type of component will be using.
+ * @returns -> Returns the component with the attributes wish.
+ */
 
 export default function Button({
 	name,
-	id = name,
 	type = 'button',
 	disabled = false,
 	handleClick,
 	children, // Information about button
-	style,
-	styleBtnIcon,
-	variant = '', // Variant is about the many forms to access the button on different types.
+	classNameBtn = '',
+	classNameBtnIcon = '',
 	typeBtn = '',
+	variant = '', // Variant is about the many forms to access the button on different types.
 	title = 'inform title of button',
 	btnIcon = null,
-	className, //
+	className,
 }) {
-	// Function for create the CSS classes clearly
+	/**
+	 * Function for create the CSS classes
+	 * @returns -> Return the class selected.
+	 */
 	const getButtonClasses = () => {
 		const classes = [styles.button]
 		if (typeBtn === 'icon') {
@@ -53,8 +63,8 @@ export default function Button({
 
 		return (
 			<button
-				className={getButtonClasses()}
-				style={styleBtnIcon}
+				className={`${getButtonClasses()} ${classNameBtn}`}
+				id={name}
 				title={title}
 				disabled={disabled}
 				onClick={handleClick}
@@ -66,13 +76,12 @@ export default function Button({
 
 	return (
 		<button
-			className={getButtonClasses()}
+			className={`${getButtonClasses()} ${classNameBtnIcon}`}
+			id={name}
 			name={name}
 			type={type}
 			disabled={disabled}
-			onClick={handleClick}
-			style={style}
-			id={id}>
+			onClick={handleClick}>
 			{children}
 		</button>
 	)

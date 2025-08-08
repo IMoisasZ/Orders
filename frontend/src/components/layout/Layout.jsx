@@ -1,4 +1,4 @@
-// Layout.jsx
+/** @format */
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Header from '../header/Header'
@@ -9,7 +9,7 @@ export default function Layout() {
 		<>
 			<Header />
 			<Message />
-			{/* O Outlet é onde o conteúdo da rota, como a página Client, será renderizado */}
+			{/**@description Outlet is where the route content is add. Its like the page Client, will be rendering.  */}
 			<main>
 				<Outlet />
 			</main>

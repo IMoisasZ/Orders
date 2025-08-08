@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useCallback, useEffect, useState } from 'react'
 import Container from '../../components/container/Container'
 import Form from '../../components/form/Form'
@@ -20,31 +22,31 @@ import { validatorClient } from '../../validators/client.validator'
 import { sortData } from '../../utils/sort_data.utils'
 
 export default function Client() {
-	// form states
+	/**@describe states form */
 	const [id, setId] = useState('')
 	const [client, setClient] = useState('')
 	const [active, setActive] = useState(true)
 	const [nameBtn, setNameBtn] = useState('Incluir')
 	const [btnDisabled, setBtnDisabled] = useState(false)
 
-	// states list and search
+	/**@description states list and search */
 	const [listClients, setListClients] = useState([]) // All clients list
 	const [filteredClients, setFilteredClients] = useState([]) // Filtered list
 	const [hideClientsDisabled, setHideClientsDisabled] = useState(true)
 	const [search, setSearch] = useState('')
 
-	// pagination states
+	/**@description pagination states */
 	const [clientsPerPage, setClientsPerPage] = useState(4)
 	const [totalPages, setTotalPages] = useState(1)
 	const [actualPage, setActualPage] = useState(1)
 
-	// sorting states
+	/**@description sorting states */
 	const [sortConfig, setSortConfig] = useState({
 		key: 'client',
 		direction: 'asc',
 	})
 
-	// action and submission of form
+	/**@description action and submission of form */
 	async function handleOnSubmit(e) {
 		e.preventDefault()
 		setBtnDisabled(true)
@@ -68,7 +70,7 @@ export default function Client() {
 		}
 	}
 
-	// function to take all clients
+	/**@description function to take all clients */
 	const takeAllClients = useCallback(async () => {
 		try {
 			const data = await getAllClients(false) //take all without initial filter
@@ -78,16 +80,16 @@ export default function Client() {
 		}
 	}, [])
 
-	// load all clients initial component
+	/**@description load all clients initial component */
 	useEffect(() => {
 		takeAllClients()
 	}, [takeAllClients])
 
-	// filter, sort and paginate the data
+	/**@description filter, sort and paginate the data */
 	useEffect(() => {
 		let currentList = [...listClients]
 
-		// 1. Apply the filter of status (enable/disable)
+		/**@description 1. Apply the filter of status (enable/disable) */
 		if (hideClientsDisabled) {
 			currentList = currentList.filter((client) => client.active === true)
 		}
