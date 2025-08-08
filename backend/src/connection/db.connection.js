@@ -1,3 +1,5 @@
+/** @format */
+
 // src/connection/db.connection.js
 import Sequelize from 'sequelize'
 
@@ -37,7 +39,10 @@ export async function getDbConnection() {
 		)
 
 		// if environment is development create a database and results equals 0
-		if (NODE_ENV === 'development' && results.length === 0) {
+		if (
+			NODE_ENV === 'development' ||
+			(NODE_ENV === 'test' && results.length === 0)
+		) {
 			await dbConnectNoDatabase.query(`CREATE DATABASE ${DATABASE};`)
 			console.warn(
 				`Database '${DATABASE}' created successfully in DEVELOPMENT environment.`
