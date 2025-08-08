@@ -1,20 +1,15 @@
-/* src/components/Table/Table.module.css */
-
-/* ------------------------------------------------------------- */
-/* Container para Rolagem Horizontal (Primeira estratégia)      */
-/* ------------------------------------------------------------- */
 .tableResponsiveContainer {
     width: 100%;
-    overflow-x: auto; /* Permite rolagem horizontal */
-    -webkit-overflow-scrolling: touch; /* Melhora a rolagem em iOS */
-    margin-bottom: 20px; /* Espaço abaixo da tabela */
-    border: 1px solid #e0e0e0; /* Borda leve ao redor do container */
-    border-radius: 8px; /* Cantos arredondados */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    overflow-x: auto; /* Permit horizontal scroll */
+    -webkit-overflow-scrolling: touch; /* Improve the scroll in IOS */
+    margin-bottom: 20px; /* Space bellow of the table */
+    border: 1px solid #e0e0e0; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Smooth border */
 }
 
 /* ------------------------------------------------------------- */
-/* Estilos Base da Tabela                                        */
+/* Styles base of the table                                        */
 /* ------------------------------------------------------------- */
 .table {
     width: 80%;
@@ -27,7 +22,7 @@
 .table td {
     padding: 12px 15px;
     text-align: center;
-    border-bottom: 1px solid #e0e0e0; /* Borda inferior para cada célula */
+    border-bottom: 1px solid #e0e0e0; 
 }
 
 .table th {
@@ -43,61 +38,54 @@
 }
 
 /* ------------------------------------------------------------- */
-/* Responsividade Avançada: Empilhamento de Colunas (Mobile)   */
+/* Responsiveness advanced: Stacking of columns (mobile) */
 /* ------------------------------------------------------------- */
-/* Esta abordagem transforma a tabela em "cartões" em telas pequenas */
+/* This approach transform the table in 'cards' in small screens */
 
 @media (max-width: 768px) {
     .tableResponsiveContainer {
-        border: none; /* Remove a borda do container quando empilha */
+        border: none; 
         box-shadow: none;
     }
 
     .table {
-        border: none; /* Remove bordas da tabela */
-        min-width: unset; /* Remove largura mínima para permitir empilhamento */
-        display: block; /* A tabela se comporta como um bloco */
+        border: none; 
+        min-width: unset; /* Remove minimum width to permit stacking. */
+        display: block; /* The table have the holds like a block. */
     }
 
     .table thead {
-        display: none; /* Esconde o cabeçalho original da tabela em mobile */
+        display: none; 
     }
 
     .table tbody,
     .table tr,
     .table td {
-        display: block; /* Linhas e células se comportam como blocos */
-        width: 100%; /* Cada célula ocupa a largura total */
+        display: block;
+        width: 100%;
     }
 
     .table tr {
-        margin-bottom: 15px; /* Espaço entre as "linhas-cartões" */
-        border: 1px solid #e0e0e0; /* Borda para cada "cartão" */
+        margin-bottom: 15px; 
+        border: 1px solid #e0e0e0;
         border-radius: 8px;
         background-color: #fff;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
 
     .table td {
-        border: none; /* Remove bordas internas das células */
-        text-align: right; /* Alinha o valor à direita */
+        border: none; 
+        text-align: right;
         padding: 10px 15px;
-        position: relative; /* Para posicionar o label da coluna */
-        padding-left: 50%; /* Espaço para o label antes do valor */
-        word-wrap: break-word; /* Garante que palavras longas quebrem */
-    }
-
-    /* Adiciona o cabeçalho da coluna como um pseudo-elemento no TD */
-    .table td::before {
-        content: attr(data-label); /* Pega o valor do atributo data-label no HTML */
+        position: relative; /* To left the attribute position data-label on HTML. */
         position: absolute;
         left: 15px;
-        width: calc(50% - 30px); /* Ajusta a largura do label */
+        width: calc(50% - 30px); /* Adjust the width of the label. */
         padding-right: 10px;
-        white-space: nowrap; /* Evita que o label quebre */
+        white-space: nowrap; /* Avoid the label broke.*/
         font-weight: 600;
         color: #777;
-        text-align: left; /* Alinha o label à esquerda */
+        text-align: left;
         font-size: 14px;
     }
 }
@@ -113,12 +101,12 @@
     color: red;
 }
 
-/* Ajustes para telas muito pequenas */
+/* Adjust to smallest screens */
 @media (max-width: 480px) {
     .table td {
         padding: 8px 12px;
         font-size: 14px;
-        padding-left: 45%; /* Ajusta espaço para o label */
+        padding-left: 45%;
     }
     .table td::before {
         left: 12px;

@@ -1,14 +1,14 @@
 .app_header {
     display: flex;
-    justify-content: space-between; /* Espaça os elementos */
-    align-items: center; /* Alinha verticalmente */
-    padding: 1rem 2rem; /* Espaçamento interno */
-    background-color: #000080; /* Fundo azul escuro */
+    justify-content: space-between; /* Space between elements */
+    align-items: center; /* Align vertical */
+    padding: 1rem 2rem; /* Internal space */
+    background-color: #000080;
     color: #fff; /* Texto branco */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Smooth edge */
 }
 
-/* Estilo do Logo */
+/* Logo style */
 .header_logo {
     &:hover {
         img {
@@ -33,22 +33,22 @@
 }
 
 
-/* Estilo da Navegação */
+/* Style navigate */
 .header_nav {
     & ul {
-        list-style: none; /* Remove os pontos da lista */
+        list-style: none; 
         margin: 0;
         padding: 0;
-        display: flex; /* Deixa os links um ao lado do outro */
-        gap: 2rem; /* Espaçamento entre os links */
+        display: flex; 
+        gap: 2rem; 
     }
 
     & a {
         color: #fff;
-        text-decoration: none; /* Remove o sublinhado */
+        text-decoration: none;
         font-size: 1rem;
         font-weight: 500;
-        transition: color 0.3s ease; /* Transição suave na cor */
+        transition: color 0.3s ease; /* Smooth transition in the color */
 
         &:hover {
                 color: #ffd700; 
@@ -56,7 +56,7 @@
     }
 } 
 
-/* Estilo da Seção do Usuário */
+/* Section style of the user */
 .header_user_info {
     display: flex;
     align-items: center;
@@ -67,8 +67,8 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #ffd700; /* Um fundo para a letra */
-    color: #000080; /* Cor do texto */
+    background-color: #ffd700;
+    color: #000080;
     display: flex;
     justify-content: center;
     align-items: center;
