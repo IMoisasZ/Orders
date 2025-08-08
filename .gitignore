@@ -1,6 +1,6 @@
 # backend
 node_modules
-order.log
+orders.log
 .env.development
 .env.production
 .env.test
