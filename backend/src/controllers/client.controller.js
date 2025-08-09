@@ -9,10 +9,11 @@ import ClientService from '../services/client.service.js'
 async function createClient(req, res, next) {
 	try {
 		const client = req.body
-		res.status(201).send(await ClientService.createClient(client))
+		res.status(201).json(await ClientService.createClient(client))
 		const loggerMessage = `POST - /client - ${JSON.stringify(client)}`
 		req.logger.info(loggerMessage)
 	} catch (error) {
+		console.error({ error })
 		next(error)
 	}
 }
@@ -21,7 +22,7 @@ async function updateClient(req, res, next) {
 	try {
 		const { id } = req.params
 		const client = req.body
-		res.status(200).send(await ClientService.updateClient(id, client))
+		res.status(200).json(await ClientService.updateClient(id, client))
 		const loggerMessage = `PUT - /client/:id=${id} - ${JSON.stringify(client)}`
 		req.logger.info(loggerMessage)
 	} catch (error) {
@@ -32,7 +33,7 @@ async function updateClient(req, res, next) {
 async function getAllClients(req, res, next) {
 	try {
 		const { active } = req.query
-		res.status(200).send(await ClientService.getAllClients(active))
+		res.status(200).json(await ClientService.getAllClients(active))
 		const loggerMessage =
 			active === 'true'
 				? `GET - /client?active=${active}`
@@ -46,7 +47,7 @@ async function getAllClients(req, res, next) {
 async function getClient(req, res, next) {
 	try {
 		const { id } = req.params
-		res.status(200).send(await ClientService.getClient(id))
+		res.status(200).json(await ClientService.getClient(id))
 		const loggerMessage = `GET - /client/:id=${id}`
 		req.logger.info(loggerMessage)
 	} catch (error) {
@@ -60,7 +61,7 @@ async function patchDisableEnableClient(req, res, next) {
 		const { active } = req.body
 		res
 			.status(200)
-			.send(await ClientService.patchDisableEnableClient(id, active))
+			.json(await ClientService.patchDisableEnableClient(id, active))
 		const loggerMessage = active
 			? `PATCH - /client/:id=${id} - Client enabled`
 			: `PATCH - /client/:id=${id} - Client disabled`
