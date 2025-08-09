@@ -22,19 +22,18 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/plugin-proposal-json-modules": "^7.25.9",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-typescript": "^7.27.1",
+    "babel-jest": "^29.7.0",
     "cross-env": "^7.0.3",
     "jest": "^30.0.5",
+    "jest-circus": "^30.0.5",
+    "jest-raw-loader": "^1.0.1",
     "jsdoc": "^4.0.4",
-    "supertest": "^7.1.4"
-  },
-  "jest": {
-  "transform": {},
-  "testMatch": [
-    "<rootDir>/src/**/*.test.js",
-    "<rootDir>/__tests__/**/*.js"
-  ],
-  "moduleNameMapper": {
-    "^(\\.{1,2}/.*)\\.js$": "$1"
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.1",
+    "typescript": "^5.9.2"
   }
-}
 }
