@@ -3,13 +3,14 @@ import { validationMiddleware } from '../utils/validation_middleware.utils.js'
 
 const validationClientCreate = [
 	body('client')
-		.notEmpty()
+		.exists({ checkFalsy: true })
 		.custom((value) => {
 			if (typeof value !== 'string') {
 				throw new Error(`O cliente deve ser um texto!`)
 			}
 			return true
 		})
+		.isString()
 		.trim()
 		.isLength({ min: 2, max: 100 })
 		.withMessage('O cliente deve ter no minimo 2 caracteres!'),
@@ -19,6 +20,14 @@ const validationClientCreate = [
 const validationClientUpdate = [
 	param('id').isNumeric().withMessage('O ID deve ser numerico!'),
 	body('client')
+		.exists({ checkFalsy: true })
+		.custom((value) => {
+			if (typeof value !== 'string') {
+				throw new Error(`O cliente deve ser um texto!`)
+			}
+			return true
+		})
+		.isString()
 		.trim()
 		.notEmpty()
 		.withMessage('Cliente não informado!')
