@@ -1,5 +1,5 @@
 import { body, param, query, validationResult } from 'express-validator'
-import statsOrder from '../data/status_order.data.json' assert { type: 'json' }
+import statsOrder from '../data/status_order.data.json' with { type: 'json' }
 
 function validationMiddleware(defaultMessage = 'Dados inválidos!') {
 	return (req, res, next) => {

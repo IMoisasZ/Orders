@@ -10,8 +10,8 @@ import {
 import { ClientNotFoundError } from '../errors/client.error.js'
 import { CompanyNotFoundError } from '../errors/company.error.js'
 import { orderStatusDescription } from '../utils/order.utils.js'
-import statusOrder from '../data/status_order.data.json' assert { type: 'json' }
-import typeOrder from '../data/type_order.data.json' assert { type: 'json' }
+import statusOrder from '../data/status_order.data.json' with { type: 'json' }
+import typeOrder from '../data/type_order.data.json' with { type: 'json' }
 
 async function createOrder(order) {
 	let orders = await OrderRepository.createOrder(order)

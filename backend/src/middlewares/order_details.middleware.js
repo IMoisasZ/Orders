@@ -1,5 +1,5 @@
 import { param, query, body } from 'express-validator'
-import statusOrder from '../data/status_order.data.json' assert { type: 'json' }
+import statusOrder from '../data/status_order.data.json' with { type: 'json' }
 import {
 	validationMiddleware,
 	validationNotNegativeValue,

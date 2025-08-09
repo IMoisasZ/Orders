@@ -1,5 +1,5 @@
-import statusOrder from '../data/status_order.data.json' assert { type: 'json' }
-import typeOrder from '../data/type_order.data.json' assert { type: 'json' }
+import statusOrder from '../data/status_order.data.json' with { type: 'json' }
+import typeOrder from '../data/type_order.data.json' with { type: 'json' }
 
 const processOrderItemWithStatus = (orderItem) => {
 	const plainOrderItem = orderItem.toJSON

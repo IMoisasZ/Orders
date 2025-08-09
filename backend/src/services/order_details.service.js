@@ -1,6 +1,6 @@
 import OrderDetailsRepository from '../repositories/order_details.repository.js'
 import OrderRepository from '../repositories/order.repository.js'
-import statusOrder from '../data/status_order.data.json' assert { type: 'json' }
+import statusOrder from '../data/status_order.data.json' with { type: 'json' }
 import { OrderDetailsNotFoundError } from '../errors/order_details.error.js'
 import {
 	OrderNotFoundError,
