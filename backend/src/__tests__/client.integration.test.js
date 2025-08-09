@@ -6,7 +6,14 @@ import request from 'supertest'
 import app from '../app.js'
 
 import { getDbConnection } from '../connection/db.connection.js'
-import { syncModels } from '../models/index.model.js'
+import { initializeModels, syncModels } from '../models/index.model.js'
+import {
+	Client,
+	Company,
+	TypeItem,
+	Order,
+	OrderDetails,
+} from '../models/index.model.js'
 
 describe('Client API', () => {
 	let DbConnection
@@ -25,18 +32,28 @@ describe('Client API', () => {
 		/**
 		 * @description -> Sync the models. Use force: True to guarantee a clear state.
 		 */
+		initializeModels(DbConnection)
 		await syncModels(DbConnection)
 	})
 
 	/**
 	 * @description -> Clear the database after each test to avoid interference.
 	 */
+
 	afterEach(async () => {
-		await DbConnection.truncate() /** @description -> Clear the tables. */
+		// Disable the FKs
+		await DbConnection.query('SET FOREIGN_KEY_CHECKS = 0')
+		await OrderDetails.truncate({ force: true })
+		await Order.truncate({ force: true })
+		await TypeItem.truncate({ force: true })
+		await Company.truncate({ force: true })
+		await Client.truncate({ force: true })
+		// Enable the FKs
+		await DbConnection.query('SET FOREIGN_KEY_CHECKS = 1')
 	})
 
 	/**
-	 * @description -> Close the connection of databse after of all tests.
+	 * @description -> Close the connection of database after of all tests.
 	 */
 	afterAll(async () => {
 		await DbConnection.close()
@@ -47,9 +64,9 @@ describe('Client API', () => {
 	 */
 	describe('POST /client', () => {
 		it('should create a new client and return 201', async () => {
-			/**@description -> Define the variable to the nme of client. */
-			const clientName = 'Fiat'
-			const newClient = { client: clientName }
+			/**@description -> Define the variable to the name of client. */
+			// const clientName = 'Fiat'
+			const newClient = { client: 'fiat', active: true }
 
 			const response = await request(app)
 				.post('/client')
@@ -61,7 +78,7 @@ describe('Client API', () => {
 			 * @description -> Verify if response have the correct data.
 			 */
 			expect(response.body).toHaveProperty('id')
-			expect(response.body.client).toBe(clientName.toLocaleLowerCase())
+			expect(response.body.client).toBe('fiat')
 			expect(response.body.active).toBe(true)
 		})
 
@@ -110,7 +127,7 @@ describe('Client API', () => {
 		it('should update a client and return 200', async () => {
 			const createdClient = await request(app)
 				.post('/client')
-				.send({ client: 'Ford' })
+				.send({ client: 'ford' })
 			const clientId = createdClient.body.id
 			const updatedClientData = { client: 'Ford Atualizado' }
 
@@ -150,7 +167,7 @@ describe('Client API', () => {
 			const clientId = createdClient.body.id
 
 			const response = await request(app)
-				.patch(`/client/${clientId}/status`)
+				.patch(`/client/${clientId}`)
 				.send({ active: false })
 				.expect('Content-Type', /json/)
 				.expect(200)
@@ -162,7 +179,7 @@ describe('Client API', () => {
 		it('should return 404 if client to be disabled does not exist', async () => {
 			const nonExistentId = 999
 			await request(app)
-				.patch(`/client/${nonExistentId}/status`)
+				.patch(`/client/${nonExistentId}`)
 				.send({ active: false })
 				.expect(404)
 		})
