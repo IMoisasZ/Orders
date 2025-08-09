@@ -6,6 +6,7 @@ class Client extends Model {
 	 * @returns {Promise<Client>} - Returns a promise that resolves  to the new client.
 	 */
 	static async createClient(clientData) {
+		console.log('MODEL CLIENT DATA:', clientData)
 		return await this.create(clientData)
 	}
 
@@ -84,9 +85,10 @@ const ClientAttributes = {
 
 const ClientOptions = {
 	tableName: 'client',
+	timestamps: true,
 	hooks: {
-		beforeSave: (instance, options) => {
-			if (instance.client) {
+		beforeValidate: (instance, options) => {
+			if (instance.client && typeof instance.client === 'string') {
 				instance.client = instance.client.toLowerCase()
 			}
 		},
