@@ -20,16 +20,20 @@ export default function Checkbox({
 	disabled,
 	value,
 	checked,
-	toggleChange,
+	toggleChange = null,
 	classNameContainerCheckbox = '',
 	classNameCheckbox = '',
+	type = 'checkbox',
 }) {
+	if (type !== 'checkbox') {
+		return null
+	}
 	return (
 		<div className={`${styles.container} ${classNameContainerCheckbox}`}>
 			<label htmlFor={name}>{labelName}</label>
 			<input
 				className={classNameCheckbox}
-				type='checkbox'
+				type={type}
 				id={name}
 				name={name}
 				disabled={disabled}
