@@ -1,8 +1,9 @@
+/** @format */
+
 // src/components/Button.test.js
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
-import '@testing-library/jest-dom'
-import Button from '../button/Button'
+import Button from './Button'
 
 /**
  * @description -> Mock the CSS class to tests don't broken.

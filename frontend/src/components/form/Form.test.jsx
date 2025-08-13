@@ -1,6 +1,7 @@
+/** @format */
+
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
-import '@testing-library/jest-dom'
 import Form from '../form/Form'
 import Checkbox from '../checkbox/Checkbox'
 import Button from '../button/Button'
