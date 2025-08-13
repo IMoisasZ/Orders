@@ -18,6 +18,7 @@ export default function Container({
 }) {
 	return (
 		<div
+			data-testid='container-component'
 			className={`${styles.container} ${className}`}
 			style={style}>
 			{titlePage && <h1>{titlePage}</h1>}
