@@ -9,7 +9,7 @@ import styles from './Form.module.css'
  * @returns -> Returns the component with the attributes wish.
  */
 
-export default function MyForm({ children, handleSubmit, className = '' }) {
+export default function Form({ children, handleSubmit, className = '' }) {
 	return (
 		<form
 			className={`${styles.form_container} ${className}`}
