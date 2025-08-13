@@ -59,7 +59,7 @@ export default function Button({
 	}
 
 	if (typeBtn === 'icon') {
-		const icon = listBtnIcons[btnIcon]
+		const Icon = listBtnIcons[btnIcon]
 
 		return (
 			<button
@@ -69,7 +69,7 @@ export default function Button({
 				disabled={disabled}
 				onClick={handleClick}
 				type={type}>
-				{icon}
+				{<Icon />}
 			</button>
 		)
 	}
@@ -79,6 +79,7 @@ export default function Button({
 			className={`${getButtonClasses()} ${classNameBtnIcon}`}
 			id={name}
 			name={name}
+			title={title}
 			type={type}
 			disabled={disabled}
 			onClick={handleClick}>
