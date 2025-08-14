@@ -14,9 +14,13 @@ export default function Header({ nameHeader = '' }) {
 	const [userName, _] = useState('Moisés')
 	const navigate = useNavigate()
 	return (
-		<header className={styles.app_header}>
+		<header
+			className={styles.app_header}
+			data-testid='header'>
 			{/**@description Section 1: Logo. */}
-			<div className={styles.header_logo}>
+			<div
+				className={styles.header_logo}
+				data-testid='logo'>
 				<img
 					src={logo}
 					alt='Logo da Aplicação'
