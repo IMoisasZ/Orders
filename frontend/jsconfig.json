@@ -9,5 +9,5 @@
   },
   "include": [
     "src/**/*"
-, "src/setupTests.js"  ]
+, "src/setupTests.js", "jest.config.js"  ]
 }
