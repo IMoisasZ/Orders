@@ -38,7 +38,6 @@ export default function Input({
 			style={containerStyle}>
 			<label
 				className={`${styles.input_label} ${classNameInput}`}
-				id={name}
 				htmlFor={name}>
 				{labelName}
 			</label>
